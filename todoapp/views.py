@@ -5,4 +5,4 @@ from django.shortcuts import render
 
 # Create your views here.
 def todoView(request):
-	return HttpResponse('hello, this is a todoView')
+	return render(request, 'todo.html');
