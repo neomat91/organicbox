@@ -1,13 +1,27 @@
-<h1>this is the todo page. </h1>
+<head>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+</head>
 
+<h1 style="text-align: center;"> ToDo APPLICATION </h1>
+<h3 style="text-align: center;"> Written using django/python </h3>
+
+<body>
 <ul>
 	{% for todo_item in all_items %}
-		<li>{{ todo_item.content }} </li>
+		<li style="padding: 15px">{{ todo_item.content }} 
+			<form action="/deleteTodo/{{todo_item.id}}/" 
+				style="display: inline;"
+				method="post">{% csrf_token %}
+				<input type="submit" value="&#9747;" />
+			</form>
+		</li>
 	{% endfor %}	
 </ul>
 
-<!-- add to todo list -->
-<form action="/addTodo/" method="post">{% csrf_token %}
+<form style="padding-top:15px; padding-left: 45px; " action="/addTodo/" method="post">{% csrf_token %}
 	<input type="text" name="content" />
 	<input type="submit" value="Add" />
 </form>
+
+</body>
